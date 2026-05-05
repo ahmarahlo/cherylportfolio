@@ -56,21 +56,16 @@ document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
 // Custom Cursor Logic
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
+let cursorX = 0, cursorY = 0, followerX = 0, followerY = 0;
 
 if (window.innerWidth > 768) {
     document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        setTimeout(() => {
-            cursorFollower.style.left = e.clientX + 'px';
-            cursorFollower.style.top = e.clientY + 'px';
-        }, 50);
+        cursorX = e.clientX;
+        cursorY = e.clientY;
 
         // Check background color under cursor for dynamic color change
         const el = document.elementFromPoint(e.clientX, e.clientY);
         if (el) {
-            // Check if element or its parent has a red background
             if (el.closest('.bg-red') || el.closest('.slide-red') || el.closest('#red-sidebar') || el.closest('.tools-box')) {
                 cursor.classList.add('cursor-white');
                 cursorFollower.classList.add('cursor-white');
@@ -80,6 +75,20 @@ if (window.innerWidth > 768) {
             }
         }
     });
+
+    // Animation Loop for Smooth Cursor
+    function animateCursor() {
+        // Direct update for cursor
+        cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+        
+        // Eased update for follower
+        followerX += (cursorX - followerX) * 0.2;
+        followerY += (cursorY - followerY) * 0.2;
+        cursorFollower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
     const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category, .logo-box, .cutout-img');
 
@@ -125,31 +134,28 @@ VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
 });
 
 // Simple Parallax Effect for Backgrounds
-window.addEventListener('scroll', () => {
-    if (!isSidebarMode && window.innerWidth > 768) return;
-    const scrollY = window.scrollY;
-    document.querySelectorAll('.parallax-bg').forEach(bg => {
-        // Move background up slower than scroll
-        bg.style.transform = `translateY(${scrollY * 0.2}px)`;
-    });
-});
+// Disabled scroll parallax as it causes heavy lag
+/* window.addEventListener('scroll', () => { ... }); */
 
 // Dynamic Mouse Parallax to make it "Alive"
+let mouseParallaxActive = false;
+let mouseX = 0, mouseY = 0;
+
 if (window.innerWidth > 768) {
     document.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX / window.innerWidth - 0.5;
-        const mouseY = e.clientY / window.innerHeight - 0.5;
+        mouseX = e.clientX / window.innerWidth - 0.5;
+        mouseY = e.clientY / window.innerHeight - 0.5;
         
-        document.querySelectorAll('.parallax-bg').forEach(bg => {
-            // Check if there is already a scrollY transform to preserve it
-            let currentScrollTransform = "";
-            if (bg.style.transform && bg.style.transform.includes('translateY')) {
-                currentScrollTransform = bg.style.transform.split(' ')[0]; // keeping the translateY from scroll
-            }
-            
-            // Apply slight opposite movement to mouse
-            bg.style.transform = `${currentScrollTransform} translate(${mouseX * -30}px, ${mouseY * -30}px)`;
-        });
+        if (!mouseParallaxActive) {
+            mouseParallaxActive = true;
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.parallax-bg').forEach(bg => {
+                    // Apply slight opposite movement to mouse with 3d transform for perf
+                    bg.style.transform = `translate3d(${mouseX * -30}px, ${mouseY * -30}px, 0)`;
+                });
+                mouseParallaxActive = false;
+            });
+        }
     });
 }
 

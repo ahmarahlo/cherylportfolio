@@ -26,21 +26,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Custom Webkit Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--light-grey);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--primary-red);
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-red);
-}
-
 body.sidebar-mode {
     overflow-y: auto;
 }
