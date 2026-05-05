@@ -64,6 +64,18 @@ if (window.innerWidth > 768) {
             cursorFollower.style.left = e.clientX + 'px';
             cursorFollower.style.top = e.clientY + 'px';
         }, 50);
+
+        // Check if cursor is over a red background
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        if (el) {
+            if (el.closest('.slide-red') || (isSidebarMode && el.closest('.red-sidebar'))) {
+                cursor.classList.add('cursor-white');
+                cursorFollower.classList.add('cursor-white');
+            } else {
+                cursor.classList.remove('cursor-white');
+                cursorFollower.classList.remove('cursor-white');
+            }
+        }
     });
 
     const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category');
@@ -89,10 +101,14 @@ const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // Optional: observer.unobserve(entry.target); // to animate only once
         }
     });
 }, observerOptions);
+
+// Reveal elements immediately that are in the sidebar
+document.querySelectorAll('.red-sidebar .fade-up').forEach(el => {
+    el.classList.add('is-visible');
+});
 
 // Initialize Vanilla Tilt for 3D hover effects
 VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {

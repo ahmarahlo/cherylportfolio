@@ -32,18 +32,30 @@ body.sidebar-mode {
     background: var(--primary-red);
     border-radius: 50%;
     position: fixed; pointer-events: none; z-index: 9999;
-    transition: transform 0.1s ease; transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.3s; transform: translate(-50%, -50%);
 }
 .cursor-follower {
     width: 40px; height: 40px;
     border: 2px solid rgba(139, 0, 0, 0.5); border-radius: 50%;
     position: fixed; pointer-events: none; z-index: 9998;
-    transition: transform 0.3s ease, width 0.3s, height 0.3s, background 0.3s;
+    transition: transform 0.3s ease, width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
     transform: translate(-50%, -50%);
 }
 .cursor-hover {
     width: 60px; height: 60px;
     background: rgba(139, 0, 0, 0.1); border-color: transparent;
+}
+/* White cursor on red backgrounds */
+body.sidebar-mode .cursor,
+.cursor.cursor-white {
+    background: var(--white);
+}
+body.sidebar-mode .cursor-follower,
+.cursor-follower.cursor-white {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.cursor-follower.cursor-white.cursor-hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Typography Classes */
@@ -60,9 +72,48 @@ body.sidebar-mode {
 .bold { font-weight: 700; }
 .text-center { text-align: center; }
 
-h1.large-title { font-size: 5rem; letter-spacing: 0.2rem; margin-top: -0.5rem; position: relative; transition: all 1s ease;}
-h2.script-font { font-size: 4.5rem; line-height: 1; font-weight: normal; position: relative; transition: all 1s ease;}
+h2.script-font { font-size: 4.5rem; line-height: 1; font-weight: normal; position: relative;}
 .huge-title { font-size: 6rem; margin: 1rem 0;}
+
+/* Exact Portfolio Title Layout */
+.portfolio-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transform-origin: center;
+    transition: all 1s ease;
+}
+.creative-text {
+    font-size: 4rem;
+    margin-bottom: -40px;
+    z-index: 2;
+    position: relative;
+    letter-spacing: 2px;
+}
+.portfolio-text {
+    font-size: 10rem;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+.script-f {
+    font-size: 14rem;
+    margin: 0 -20px;
+    transform: translateY(30px);
+    font-weight: normal;
+}
+.portfolio-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: -10px;
+}
+.by-text { font-size: 1.8rem; }
+.year-text { font-size: 2rem; }
 
 /* Scroll Indicator */
 .scroll-indicator {
@@ -101,20 +152,15 @@ h2.script-font { font-size: 4.5rem; line-height: 1; font-weight: normal; positio
     text-align: center;
     z-index: 10;
     width: 100%;
-}
-.divider-line {
-    width: 150px; height: 2px; background-color: var(--white);
-    margin: 2rem auto; position: relative; transition: all 1s ease;
-}
-.divider-line::after {
-    content: ''; position: absolute; top: -4px; left: 50%; transform: translateX(-50%);
-    width: 10px; height: 10px; background: var(--white); border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .sidebar-nav {
     opacity: 0; transform: translateY(20px);
     display: flex; flex-direction: column; gap: 1rem;
     transition: all 0.5s ease; pointer-events: none;
-    position: absolute; /* Kept absolute initially so it doesn't take space */
+    position: absolute;
 }
 .sidebar-nav a {
     color: var(--white); font-size: 1.2rem; letter-spacing: 2px;
@@ -129,23 +175,24 @@ body.sidebar-mode .red-sidebar {
     box-shadow: 10px 0 30px rgba(0,0,0,0.3);
 }
 body.sidebar-mode .scroll-indicator { opacity: 0; pointer-events: none; }
-body.sidebar-mode h2.script-font { font-size: 2.5rem; }
-body.sidebar-mode h1.large-title { font-size: 2.8rem; letter-spacing: 0.1rem; }
-body.sidebar-mode .divider-line { width: 80px; margin: 1.5rem auto; }
+body.sidebar-mode .portfolio-title-wrapper {
+    transform: scale(0.35); /* Scale down to fit sidebar */
+    margin-top: -100px;
+}
 body.sidebar-mode .sidebar-nav {
     opacity: 1; transform: translateY(0); pointer-events: auto;
-    position: relative; margin-top: 3rem;
+    position: relative; margin-top: -20px;
 }
 
 /* Main Content */
 .main-content {
-    margin-left: 100vw; /* Hidden initially offscreen right */
+    margin-left: 100vw;
     opacity: 0;
     transition: margin-left 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
     min-height: 100vh;
 }
 body.sidebar-mode .main-content {
-    margin-left: 350px; /* Aligns to the right of sidebar */
+    margin-left: 350px;
     opacity: 1;
 }
 
@@ -266,19 +313,32 @@ body.sidebar-mode .main-content {
 .delay-4 { transition-delay: 0.8s; }
 
 /* Responsive adjustments */
+@media (max-width: 1200px) {
+    .portfolio-text { font-size: 8rem; }
+    .script-f { font-size: 11rem; transform: translateY(20px); }
+    .creative-text { font-size: 3rem; margin-bottom: -30px; }
+}
+
 @media (max-width: 992px) {
     body.sidebar-mode .red-sidebar { width: 250px; }
     body.sidebar-mode .main-content { margin-left: 250px; }
+    body.sidebar-mode .portfolio-title-wrapper { transform: scale(0.25); }
 }
 
 @media (max-width: 768px) {
     * { cursor: auto; }
     .cursor, .cursor-follower { display: none; }
     
+    .portfolio-text { font-size: 5rem; }
+    .script-f { font-size: 7rem; transform: translateY(15px); }
+    .creative-text { font-size: 2.5rem; margin-bottom: -20px; }
+    .by-text, .year-text { font-size: 1.2rem; }
+    
     /* On mobile, stack them instead of side-by-side */
     body.sidebar-mode .red-sidebar {
-        width: 100vw; height: 300px; position: relative;
+        width: 100vw; height: 350px; position: relative;
     }
+    body.sidebar-mode .portfolio-title-wrapper { transform: scale(0.4); margin-top: -30px; }
     body.sidebar-mode .main-content {
         margin-left: 0; margin-top: 0; width: 100vw;
     }
@@ -286,8 +346,6 @@ body.sidebar-mode .main-content {
     .main-content { margin-left: 0; transform: translateY(0); display: none; }
     body.sidebar-mode .main-content { display: block; }
     
-    h1.large-title { font-size: 3rem; }
-    body.sidebar-mode h1.large-title { font-size: 2rem; }
     h2.script-font { font-size: 3rem; }
     .split-layout { flex-direction: column; }
     .skills-container { flex-direction: column; gap: 3rem; }
