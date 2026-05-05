@@ -6,80 +6,80 @@
     <title>Cheryl - Creative Portfolio</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- Fonts: Playfair Display (Serif), Great Vibes (Cursive/Script), Montserrat (Sans) -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
-    <!-- Slide 1: Cover (Red Background) -->
+    <!-- Slide 1: Cover -->
     <section class="slide slide-red slide-cover" id="slide-1">
-        <div class="halftone-overlay"></div>
-        <div class="content-wrapper text-center">
-            <h2 class="script-font text-white">creative</h2>
-            <h1 class="serif-font text-white uppercase large-title">PoRTfolio</h1>
-            <div class="divider-line"></div>
+        <div class="halftone-overlay parallax-bg"></div>
+        <div class="content-wrapper text-center animate-on-scroll">
+            <h2 class="script-font text-white fade-up">creative</h2>
+            <h1 class="serif-font text-white uppercase large-title fade-up delay-1">PoRTfolio</h1>
+            <div class="divider-line fade-up delay-2"></div>
         </div>
     </section>
 
-    <!-- Slide 2: About Me (White Background) -->
+    <!-- Slide 2: About Me -->
     <section class="slide slide-white slide-about" id="slide-2">
         <div class="border-overlay"></div>
         <div class="content-wrapper split-layout">
-            <div class="left-col image-col">
-                <div class="image-frame">
-                    <!-- Placeholder for her photo -->
-                    <img src="assets/1.png" alt="Cheryl" class="profile-img">
+            <div class="left-col image-col animate-on-scroll">
+                <div class="image-frame tilt-effect fade-right">
+                    <img src="assets/images/11.png" alt="Cheryl" class="profile-img">
                 </div>
             </div>
-            <div class="right-col text-col">
-                <h2 class="script-font text-red">about me</h2>
+            <div class="right-col text-col animate-on-scroll">
+                <h2 class="script-font text-red fade-left">about me</h2>
                 <div class="text-content">
-                    <p class="serif-font text-dark">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <p class="serif-font text-dark fade-left delay-1">
+                        Hi, I'm Cheryl. I am a passionate and driven creative with a keen eye for detail. I specialize in bringing ideas to life through engaging and visually stunning designs.
                     </p>
-                    <p class="serif-font text-dark">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    <p class="serif-font text-dark fade-left delay-2">
+                        With a strong background in graphic design and branding, I strive to create meaningful experiences that leave a lasting impact.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 3: Skills & Tools (White Background) -->
+    <!-- Slide 3: Skills & Tools -->
     <section class="slide slide-white slide-skills" id="slide-3">
         <div class="border-overlay"></div>
-        <div class="content-wrapper text-center">
-            <h2 class="script-font text-red">Skills & Tools</h2>
+        <div class="content-wrapper text-center animate-on-scroll">
+            <h2 class="script-font text-red fade-up">Skills & Tools</h2>
             <div class="skills-container">
-                <div class="skill-category">
-                    <h3 class="sans-font text-dark bold">Design Skills</h3>
+                <div class="skill-category fade-up delay-1">
+                    <h3 class="sans-font text-dark bold hover-underline">Design Skills</h3>
                     <ul class="serif-font text-dark">
-                        <li>Graphic Design</li>
-                        <li>Branding</li>
-                        <li>Typography</li>
-                        <li>Layouting</li>
+                        <li class="hover-shift">Graphic Design</li>
+                        <li class="hover-shift">Branding</li>
+                        <li class="hover-shift">Typography</li>
+                        <li class="hover-shift">Layouting</li>
                     </ul>
                 </div>
-                <div class="skill-category tools-list">
-                    <h3 class="sans-font text-dark bold">Tools</h3>
+                <div class="skill-category tools-list fade-up delay-2">
+                    <h3 class="sans-font text-dark bold hover-underline">Tools</h3>
                     <div class="tools-icons text-red">
-                        <i class="fa-brands fa-adobe"></i>
-                        <span>Illustrator</span>
-                        <span>Photoshop</span>
-                        <span>Canva</span>
+                        <div class="tool-item"><i class="fa-brands fa-adobe"></i><span>Illustrator</span></div>
+                        <div class="tool-item"><i class="fa-solid fa-pen-nib"></i><span>Photoshop</span></div>
+                        <div class="tool-item"><i class="fa-solid fa-palette"></i><span>Canva</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 4: Work Experience (Red Background) -->
+    <!-- Slide 4: Work Experience -->
     <section class="slide slide-red slide-experience" id="slide-4">
-        <div class="halftone-overlay"></div>
-        <div class="content-wrapper">
-            <div class="experience-box bg-white">
+        <div class="halftone-overlay parallax-bg"></div>
+        <div class="content-wrapper animate-on-scroll">
+            <div class="experience-box bg-white fade-up tilt-effect">
                 <h3 class="sans-font text-red uppercase bold">Work Experience</h3>
                 <h2 class="serif-font text-dark">PT Artolite Indah Mediatama</h2>
                 <p class="serif-font text-dark italic date">20XX - 20XX</p>
@@ -92,51 +92,57 @@
         </div>
     </section>
 
-    <!-- Slides 5-9: Project Showcases (White Background with Interactive Grids) -->
+    <!-- Slides 5-9: Project Showcases -->
     <section class="slide slide-white slide-projects" id="projects">
         <div class="border-overlay"></div>
         <div class="content-wrapper">
-            <div class="project-category">
-                <h2 class="script-font text-red text-center">Poster</h2>
+            <div class="project-category animate-on-scroll">
+                <h2 class="script-font text-red text-center fade-up">Poster</h2>
                 <div class="project-grid horizontal-bars">
-                    <!-- Project placeholders -->
-                    <div class="project-item"><img src="assets/2.png" alt="Poster 1"></div>
-                    <div class="project-item"><img src="assets/3.png" alt="Poster 2"></div>
+                    <div class="project-item tilt-effect fade-up delay-1"><img src="assets/2.png" alt="Poster 1"></div>
+                    <div class="project-item tilt-effect fade-up delay-2"><img src="assets/3.png" alt="Poster 2"></div>
                 </div>
             </div>
 
-            <div class="project-category">
-                <h2 class="script-font text-red text-center">Logo & Packaging</h2>
+            <div class="project-category animate-on-scroll">
+                <h2 class="script-font text-red text-center fade-up">Logo & Packaging</h2>
                 <div class="project-grid">
-                    <div class="project-item"><img src="assets/4.png" alt="Logo"></div>
-                    <div class="project-item"><img src="assets/5.png" alt="Packaging"></div>
+                    <div class="project-item tilt-effect fade-up delay-1"><img src="assets/4.png" alt="Logo"></div>
+                    <div class="project-item tilt-effect fade-up delay-2"><img src="assets/5.png" alt="Packaging"></div>
                 </div>
             </div>
 
-            <div class="project-category">
-                <h2 class="script-font text-red text-center">Feed Instagram</h2>
+            <div class="project-category animate-on-scroll">
+                <h2 class="script-font text-red text-center fade-up">Feed Instagram</h2>
                 <div class="project-grid">
-                    <div class="project-item"><img src="assets/6.png" alt="Feed 1"></div>
-                    <div class="project-item"><img src="assets/7.png" alt="Feed 2"></div>
-                    <div class="project-item"><img src="assets/8.png" alt="Feed 3"></div>
-                    <div class="project-item"><img src="assets/9.png" alt="Feed 4"></div>
+                    <div class="project-item tilt-effect fade-up delay-1"><img src="assets/6.png" alt="Feed 1"></div>
+                    <div class="project-item tilt-effect fade-up delay-2"><img src="assets/7.png" alt="Feed 2"></div>
+                    <div class="project-item tilt-effect fade-up delay-3"><img src="assets/8.png" alt="Feed 3"></div>
+                    <div class="project-item tilt-effect fade-up delay-4"><img src="assets/9.png" alt="Feed 4"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 10: Thank You (Red Background) -->
+    <!-- Slide 10: Thank You -->
     <section class="slide slide-red slide-thankyou" id="slide-10">
-        <div class="halftone-overlay"></div>
-        <div class="content-wrapper text-center">
-            <h1 class="script-font text-white huge-title">thank you</h1>
-            <div class="contact-info">
-                <p class="sans-font text-white"><i class="fas fa-envelope"></i> email@example.com</p>
-                <p class="sans-font text-white"><i class="fab fa-instagram"></i> @instagram</p>
+        <div class="halftone-overlay parallax-bg"></div>
+        <div class="content-wrapper text-center animate-on-scroll">
+            <div class="thankyou-content fade-up">
+                <div class="thankyou-image tilt-effect fade-up delay-1">
+                    <img src="assets/images/12.png" alt="Cheryl Thank You" class="profile-img round-img">
+                </div>
+                <h1 class="script-font text-white huge-title fade-up delay-2">thank you</h1>
+                <div class="contact-info fade-up delay-3">
+                    <p class="sans-font text-white interactive-link"><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p class="sans-font text-white interactive-link"><i class="fab fa-instagram"></i> @instagram</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
