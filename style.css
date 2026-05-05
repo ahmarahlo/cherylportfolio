@@ -22,6 +22,21 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--light-grey);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red);
+}
+
 body.sidebar-mode {
     overflow-y: auto;
 }
@@ -203,12 +218,14 @@ body.sidebar-mode .main-content {
 .content-wrapper { position: relative; z-index: 10; width: 100%; max-width: 1100px; }
 
 .slide-split-vertical {
-    position: relative; min-height: 100vh;
+    position: relative; min-height: auto;
     display: flex; flex-direction: column;
 }
 .slide-split-vertical .top-half, .slide-split-vertical .bottom-half {
-    flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; padding: 4rem;
+    display: flex; align-items: center; justify-content: center; width: 100%; padding: 4rem 2rem;
 }
+.compact-split .top-half { padding-bottom: 2rem; padding-top: 2rem;}
+.compact-split .bottom-half { padding-top: 4rem; padding-bottom: 4rem; }
 
 .bg-red { background-color: var(--primary-red); }
 .bg-white { background-color: var(--white); }
@@ -293,6 +310,17 @@ body.sidebar-mode .main-content {
 .delay-2 { transition-delay: 0.4s; }
 .delay-3 { transition-delay: 0.6s; }
 .delay-4 { transition-delay: 0.8s; }
+
+/* Dynamic Floating Animation */
+.floating { animation: floating 3s ease-in-out infinite; }
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Mouse Parallax background effect slightly moves with mouse */
+.halftone-overlay { transition: transform 0.1s ease-out; }
 
 /* =========================================
    MOBILE RESPONSIVENESS (NO SIDEBAR MODE)

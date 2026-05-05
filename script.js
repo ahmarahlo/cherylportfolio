@@ -129,6 +129,26 @@ window.addEventListener('scroll', () => {
     if (!isSidebarMode && window.innerWidth > 768) return;
     const scrollY = window.scrollY;
     document.querySelectorAll('.parallax-bg').forEach(bg => {
+        // Move background up slower than scroll
         bg.style.transform = `translateY(${scrollY * 0.2}px)`;
     });
 });
+
+// Dynamic Mouse Parallax to make it "Alive"
+if (window.innerWidth > 768) {
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth - 0.5;
+        const mouseY = e.clientY / window.innerHeight - 0.5;
+        
+        document.querySelectorAll('.parallax-bg').forEach(bg => {
+            // Check if there is already a scrollY transform to preserve it
+            let currentScrollTransform = "";
+            if (bg.style.transform && bg.style.transform.includes('translateY')) {
+                currentScrollTransform = bg.style.transform.split(' ')[0]; // keeping the translateY from scroll
+            }
+            
+            // Apply slight opposite movement to mouse
+            bg.style.transform = `${currentScrollTransform} translate(${mouseX * -30}px, ${mouseY * -30}px)`;
+        });
+    });
+}
