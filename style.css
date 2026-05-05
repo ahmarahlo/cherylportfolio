@@ -234,9 +234,9 @@ body.sidebar-mode .main-content {
 
 /* Base Slide Layouts */
 .slide {
-    position: relative; min-height: 80vh; /* Reduced from 100vh */
+    position: relative; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
-    padding: 2rem; overflow: hidden; /* Reduced padding */
+    padding: 4rem; overflow: hidden;
 }
 .content-wrapper { position: relative; z-index: 10; width: 100%; max-width: 1100px; }
 
@@ -245,10 +245,10 @@ body.sidebar-mode .main-content {
     display: flex; flex-direction: column;
 }
 .slide-split-vertical .top-half, .slide-split-vertical .bottom-half {
-    display: flex; align-items: center; justify-content: center; width: 100%; padding: 2rem 1.5rem; /* Reduced padding */
+    display: flex; align-items: center; justify-content: center; width: 100%; padding: 4rem 2rem;
 }
-.compact-split .top-half { padding-bottom: 1rem; padding-top: 1rem;}
-.compact-split .bottom-half { padding-top: 2rem; padding-bottom: 2rem; }
+.compact-split .top-half { padding-bottom: 2rem; padding-top: 2rem;}
+.compact-split .bottom-half { padding-top: 4rem; padding-bottom: 4rem; }
 
 .bg-red { background-color: var(--primary-red); }
 .bg-white { background-color: var(--white); }
