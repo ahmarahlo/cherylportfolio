@@ -70,6 +70,34 @@ body.sidebar-mode {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Hamburger Menu Styling */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(13px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-13px) rotate(-45deg); }
+
 /* Typography Classes */
 .serif-font { font-family: 'Playfair Display', serif; }
 .script-font { font-family: 'Great Vibes', cursive; }
@@ -278,8 +306,10 @@ body.sidebar-mode .main-content {
 .sample-projects-title .script-font { font-size: 9rem; line-height: 0.5;}
 
 /* Slides 6-9: Project Showcases */
-.split-header { display: flex; align-items: center; gap: 4rem; }
 .flex-center { display: flex; justify-content: center; align-items: center; width: 100%;}
+.flex-center-column {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; text-align: center;
+}
 .gap-1 { gap: 1rem; }
 .gap-2 { gap: 2rem; }
 .gap-3 { gap: 4rem; }
@@ -356,14 +386,54 @@ body.sidebar-mode .main-content {
     * { cursor: auto !important; } /* Force disable custom cursor on mobile */
     .cursor, .cursor-follower { display: none !important; }
     
+    .hamburger { display: flex; }
+    
     /* Completely disable sidebar scrolling lock and layout on Mobile */
-    body { overflow-y: auto !important; }
-    body.sidebar-mode .red-sidebar { width: 100vw; height: 100vh; position: relative; box-shadow: none; }
+    body { overflow-y: auto !important; margin: 0; padding: 0; width: 100%; }
+    
+    /* Fix mobile gap - use dvh for dynamic viewport */
+    .red-sidebar { 
+        position: relative; 
+        min-height: 100dvh; 
+        width: 100vw; 
+        height: auto;
+        padding-top: 60px;
+    }
+    
+    body.sidebar-mode .red-sidebar { width: 100vw; height: 100dvh; position: relative; box-shadow: none; }
     body.sidebar-mode .main-content { margin-left: 0; opacity: 1; }
     body.sidebar-mode .portfolio-title-wrapper { transform: scale(1); margin-top: 0; }
-    body.sidebar-mode .sidebar-nav { display: none; }
     
-    .red-sidebar { position: relative; height: 100vh; }
+    /* Transform Sidebar Nav into Mobile Menu */
+    .sidebar-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: var(--primary-red);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 999;
+    }
+    
+    .sidebar-nav.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+    
+    .sidebar-nav a {
+        font-size: 2rem !important;
+        margin-bottom: 1rem;
+    }
+    
     .main-content { margin-left: 0; opacity: 1; transform: translateY(0); display: block !important; }
     
     /* Perfect Mobile Layout for the Portfolio Title */

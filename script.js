@@ -152,3 +152,22 @@ if (window.innerWidth > 768) {
         });
     });
 }
+
+// Hamburger Menu Logic
+const hamburger = document.getElementById('hamburger-btn');
+const mobileNav = document.querySelector('.sidebar-nav');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
+    });
+}
