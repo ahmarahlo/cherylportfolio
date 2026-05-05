@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="style.css">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
-    <!-- Intro / Sidebar (Transforms on Scroll) -->
+    <!-- Intro / Sidebar (Transforms on Scroll on Desktop) -->
     <aside id="red-sidebar" class="red-sidebar slide-red">
         <div class="halftone-overlay parallax-bg"></div>
         <div class="sidebar-content">
@@ -33,9 +32,9 @@
             
             <nav class="sidebar-nav">
                 <a href="#about" class="interactive-link sans-font">About Me</a>
-                <a href="#skills" class="interactive-link sans-font">Skills</a>
+                <a href="#skills" class="interactive-link sans-font">Skills & Tools</a>
+                <a href="#experience" class="interactive-link sans-font">Experience</a>
                 <a href="#projects" class="interactive-link sans-font">Projects</a>
-                <a href="#contact" class="interactive-link sans-font">Contact</a>
             </nav>
             
             <!-- Scroll Indicator -->
@@ -49,120 +48,160 @@
     <!-- Main Content -->
     <main id="main-content" class="main-content">
         <!-- Slide 2: About Me -->
-        <section class="slide slide-white slide-about" id="about">
-            <div class="border-overlay"></div>
-            <div class="content-wrapper split-layout">
-                <div class="left-col image-col animate-on-scroll">
-                    <div class="image-frame tilt-effect fade-right">
-                        <img src="assets/images/Desain tanpa judul (1).png" alt="Cheryl" class="profile-img">
+        <section class="slide slide-white" id="about">
+            <div class="content-wrapper">
+                <h2 class="serif-font italic text-red text-center title-large animate-on-scroll fade-up" style="margin-bottom: 2rem;">about me</h2>
+                <div class="about-flex animate-on-scroll">
+                    <div class="text-col text-dark serif-font fade-right delay-1">
+                        <p>Saya <span class="bold">Cheryl Kirana Ayudia</span> lulusan SMK jurusan Desain<br>Komunikasi Visual dengan minat di bidang creative<br>design, terutama <span class="bold">visual branding dan konten digital</span>.</p>
+                        
+                        <p>Terbiasa mengerjakan desain seperti poster, social media,<br>dan konsep branding sederhana, dengan fokus pada visual<br>yang <span class="bold">clean, aesthetic, dan komunikatif</span>.</p>
+                        
+                        <p>Memiliki kemauan belajar yang tinggi, mudah<br>beradaptasi, dan siap berkembang serta berkontribusi<br>dalam <span class="bold">tim kreatif</span>.</p>
                     </div>
-                </div>
-                <div class="right-col text-col animate-on-scroll">
-                    <h2 class="script-font text-red fade-left">about me</h2>
-                    <div class="text-content">
-                        <p class="serif-font text-dark fade-left delay-1">
-                            Hi, I'm Cheryl Kirana Ayudia. I am a passionate and driven creative with a keen eye for detail. I specialize in bringing ideas to life through engaging and visually stunning designs.
-                        </p>
-                        <p class="serif-font text-dark fade-left delay-2">
-                            With a strong background in graphic design and branding, I strive to create meaningful experiences that leave a lasting impact.
-                        </p>
+                    <div class="image-col fade-left delay-2">
+                        <img src="assets/images/Desain tanpa judul (1).png" alt="Cheryl" class="profile-img cutout-img tilt-effect">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Slide 3: Skills & Tools -->
-        <section class="slide slide-white slide-skills" id="skills">
-            <div class="border-overlay"></div>
-            <div class="content-wrapper text-center animate-on-scroll">
-                <h2 class="script-font text-red fade-up">Skills & Tools</h2>
-                <div class="skills-container">
-                    <div class="skill-category fade-up delay-1">
-                        <h3 class="sans-font text-dark bold hover-underline">Design Skills</h3>
-                        <ul class="serif-font text-dark">
-                            <li class="hover-shift">Graphic Design</li>
-                            <li class="hover-shift">Branding</li>
-                            <li class="hover-shift">Typography</li>
-                            <li class="hover-shift">Layouting</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category tools-list fade-up delay-2">
-                        <h3 class="sans-font text-dark bold hover-underline">Tools</h3>
-                        <div class="tools-icons text-red">
-                            <div class="tool-item"><i class="fa-brands fa-adobe"></i><span>Illustrator</span></div>
-                            <div class="tool-item"><i class="fa-solid fa-pen-nib"></i><span>Photoshop</span></div>
-                            <div class="tool-item"><i class="fa-solid fa-palette"></i><span>Canva</span></div>
-                        </div>
-                    </div>
+        <section class="slide slide-white" id="skills">
+            <div class="content-wrapper animate-on-scroll">
+                <div class="skills-header fade-up">
+                    <h2 class="sans-font text-red bold title-large" style="display:inline-block; position:relative;">skill & tools<span class="question-mark">?</span></h2>
+                </div>
+                
+                <ul class="sans-font text-dark bold skill-list fade-up delay-1">
+                    <li>- Desain poster, brosur, dan media promosi digital</li>
+                    <li>- Pembuatan logo dan identitas visual</li>
+                    <li>- Editing video untuk konten digital</li>
+                    <li>- Pengembangan ide kreatif dan konsep konten</li>
+                    <li>- Penguasaan tools desain (Canva, Illustrator, CapCut)</li>
+                </ul>
+
+                <div class="tools-box bg-red fade-up delay-2">
+                    <div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" alt="Canva"></div>
+                    <div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Ai"></div>
+                    <div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg" alt="Word"></div>
+                    <div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/en/2/21/CapCut_logo.png" alt="CapCut" style="background:#000; border-radius:10px;"></div>
                 </div>
             </div>
         </section>
 
         <!-- Slide 4: Work Experience -->
-        <section class="slide slide-red slide-experience" id="experience">
-            <div class="halftone-overlay parallax-bg"></div>
-            <div class="content-wrapper animate-on-scroll">
-                <div class="experience-box bg-white fade-up tilt-effect">
-                    <h3 class="sans-font text-red uppercase bold">Work Experience</h3>
-                    <h2 class="serif-font text-dark">PT Artolite Indah Mediatama</h2>
-                    <p class="serif-font text-dark italic date">20XX - 20XX</p>
-                    <ul class="serif-font text-dark desc-list">
-                        <li>Developed creative design concepts for branding materials.</li>
-                        <li>Collaborated with the marketing team on promotional campaigns.</li>
-                        <li>Designed product packaging and digital media assets.</li>
+        <section class="slide slide-red bg-red" id="experience">
+            <div class="content-wrapper exp-layout animate-on-scroll">
+                <div class="exp-image fade-right delay-1">
+                     <img src="assets/images/Desain tanpa judul (2).png" alt="Cheryl Thinking" class="profile-img cutout-img tilt-effect">
+                </div>
+                <div class="exp-text text-white fade-left delay-2">
+                    <h2 class="serif-font italic title-huge right-align">work experience</h2>
+                    <div class="exp-company-details">
+                        <h3 class="serif-font italic right-align">PT Artolite Indah Mediatama</h3>
+                        <h3 class="serif-font italic right-align">Marketing Intern—</h3>
+                        <h3 class="serif-font italic right-align bold">2025-2026</h3>
+                    </div>
+                    
+                    <ul class="sans-font right-align exp-bullets">
+                        <li>Mengelola dan mengembangkan konten<br>Instagram perusahaan</li>
+                        <li>Membuat desain konten visual untuk kebutuhan<br>promosi</li>
+                        <li>Menyusun konsep konten agar lebih menarik<br>dan sesuai target audiens</li>
+                        <li>Membantu meningkatkan engagement melalui<br>konten yang kreatif</li>
+                        <li>Bekerja sama dengan tim dalam perencanaan<br>strategi konten</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Slides 5-9: Project Showcases -->
-        <section class="slide slide-white slide-projects" id="projects">
-            <div class="border-overlay"></div>
-            <div class="content-wrapper">
-                <div class="project-category animate-on-scroll">
-                    <h2 class="script-font text-red text-center fade-up">Poster</h2>
-                    <div class="project-grid horizontal-bars">
-                        <div class="project-item tilt-effect fade-up delay-1"><img src="assets/2.png" alt="Poster 1"></div>
-                        <div class="project-item tilt-effect fade-up delay-2"><img src="assets/3.png" alt="Poster 2"></div>
-                    </div>
-                </div>
-
-                <div class="project-category animate-on-scroll">
-                    <h2 class="script-font text-red text-center fade-up">Logo & Packaging</h2>
-                    <div class="project-grid">
-                        <div class="project-item tilt-effect fade-up delay-1"><img src="assets/4.png" alt="Logo"></div>
-                        <div class="project-item tilt-effect fade-up delay-2"><img src="assets/5.png" alt="Packaging"></div>
-                    </div>
-                </div>
-
-                <div class="project-category animate-on-scroll">
-                    <h2 class="script-font text-red text-center fade-up">Feed Instagram</h2>
-                    <div class="project-grid">
-                        <div class="project-item tilt-effect fade-up delay-1"><img src="assets/6.png" alt="Feed 1"></div>
-                        <div class="project-item tilt-effect fade-up delay-2"><img src="assets/7.png" alt="Feed 2"></div>
-                        <div class="project-item tilt-effect fade-up delay-3"><img src="assets/8.png" alt="Feed 3"></div>
-                        <div class="project-item tilt-effect fade-up delay-4"><img src="assets/9.png" alt="Feed 4"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 10: Thank You -->
-        <section class="slide slide-red slide-thankyou" id="contact">
+        <!-- Slide 5: Sample Projects Intro -->
+        <section class="slide slide-red bg-red" id="projects">
             <div class="halftone-overlay parallax-bg"></div>
             <div class="content-wrapper text-center animate-on-scroll">
-                <div class="thankyou-content fade-up">
-                    <div class="thankyou-image tilt-effect fade-up delay-1">
-                        <img src="assets/images/Desain tanpa judul (2).png" alt="Cheryl Thank You" class="profile-img round-img">
-                    </div>
-                    <h1 class="script-font text-white huge-title fade-up delay-2">thank you</h1>
-                    <div class="contact-info fade-up delay-3">
-                        <p class="sans-font text-white interactive-link"><i class="fas fa-envelope"></i> email@example.com</p>
-                        <p class="sans-font text-white interactive-link"><i class="fab fa-instagram"></i> @instagram</p>
-                    </div>
+                <div class="sample-projects-title fade-up">
+                    <span class="serif-font text-white">sample</span>
+                    <span class="dot text-white"></span>
+                    <span class="script-font text-white">projects</span>
                 </div>
             </div>
         </section>
+
+        <!-- Slide 6: Feed Instagram -->
+        <section class="slide-split-vertical" id="feed">
+            <div class="top-half bg-white animate-on-scroll">
+                <div class="content-wrapper split-header fade-up">
+                    <h2 class="script-font text-red" style="font-size: 6rem; flex: 1;">Feed Instagram</h2>
+                    <p class="serif-font text-red" style="flex: 1.5; font-size: 1.3rem; text-align: justify;">
+                        Desain feed Instagram dibuat dengan konsep visual yang konsisten menggunakan warna dan elemen yang selaras dengan identitas brand. Setiap postingan menampilkan informasi jasa, portofolio, dan promosi secara menarik agar mudah dipahami oleh audiens.
+                    </p>
+                </div>
+            </div>
+            <div class="bottom-half bg-red animate-on-scroll">
+                <div class="content-wrapper flex-center gap-2 fade-up delay-1">
+                    <img src="assets/7.png" class="project-img-tall tilt-effect">
+                    <img src="assets/8.png" class="project-img-tall tilt-effect">
+                    <img src="assets/9.png" class="project-img-tall tilt-effect">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Logo -->
+        <section class="slide slide-red bg-red" id="logo">
+            <div class="content-wrapper logo-layout animate-on-scroll">
+                <div class="logo-grid fade-right delay-1">
+                    <!-- Placeholder logos based on PPT -->
+                    <div class="logo-box"><img src="assets/4.png"></div>
+                    <div class="logo-box"><img src="assets/2.png"></div>
+                    <div class="logo-box"><img src="assets/3.png"></div>
+                    <div class="logo-box"><img src="assets/6.png"></div>
+                </div>
+                <div class="logo-text bg-white fade-left delay-2 tilt-effect">
+                    <h2 class="script-font text-red" style="font-size: 7rem; margin-bottom: 2rem;">Logo</h2>
+                    <p class="serif-font text-red" style="font-size: 1.3rem; text-align: justify;">
+                        Berikut adalah hasil karya desain Logo yang telah saya buat, Logo-logo berikut merupakan hasil desain yang dibuat dengan berbagai konsep, baik sebagai identitas maupun eksplorasi bentuk visual. Setiap logo dirancang dengan gaya sederhana agar mudah dikenali dan memiliki ciri khas tersendiri.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Packaging -->
+        <section class="slide-split-vertical" id="packaging">
+            <div class="top-half bg-white animate-on-scroll">
+                <div class="content-wrapper split-header fade-up">
+                    <h2 class="script-font text-red" style="font-size: 7rem; flex: 1;">Packaging</h2>
+                    <p class="serif-font text-red" style="flex: 1; font-size: 1.5rem; text-align: left;">
+                        Packaging dirancang dengan memperhatikan identitas brand, memadukan warna, ilustrasi, dan tipografi agar menarik perhatian serta mudah dikenali.
+                    </p>
+                </div>
+            </div>
+            <div class="bottom-half bg-red animate-on-scroll">
+                <div class="content-wrapper flex-center gap-3 fade-up delay-1">
+                    <img src="assets/kue1.png" class="project-img-wide tilt-effect">
+                    <img src="assets/teh1.png" class="project-img-wide tilt-effect">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Poster -->
+        <section class="slide-split-vertical" id="poster">
+            <div class="top-half bg-red animate-on-scroll" style="padding-top: 5rem;">
+                <div class="content-wrapper flex-center gap-1 fade-up">
+                    <img src="assets/2.png" class="project-img-tall tilt-effect">
+                    <img src="assets/3.png" class="project-img-tall tilt-effect">
+                    <img src="assets/4.png" class="project-img-tall tilt-effect">
+                    <img src="assets/6.png" class="project-img-tall tilt-effect">
+                </div>
+            </div>
+            <div class="bottom-half bg-white animate-on-scroll">
+                <div class="content-wrapper poster-footer fade-up delay-1">
+                    <p class="serif-font text-red" style="text-align: right;">Berikut beberapa hasil desain poster yang telah saya kerjakan, dengan fokus pada komposisi, warna, dan penyampaian pesan yang efektif</p>
+                    <h2 class="script-font text-red" style="font-size: 7rem; text-align: center;">Poster</h2>
+                    <p class="serif-font text-red" style="text-align: left;">Desain poster ini dibuat untuk berbagai kebutuhan seperti promosi produk, event, dan konten media sosial dengan pendekatan visual yang menarik dan komunikatif</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Scripts -->

@@ -2,7 +2,9 @@
 let isSidebarMode = false;
 
 function enterSidebarMode() {
+    if (window.innerWidth <= 768) return; // Disable on mobile
     if (isSidebarMode) return;
+    
     isSidebarMode = true;
     document.body.classList.add('sidebar-mode');
     
@@ -16,7 +18,7 @@ function enterSidebarMode() {
 
 // Listen for mouse wheel scroll
 window.addEventListener('wheel', (e) => {
-    if (!isSidebarMode && e.deltaY > 0) {
+    if (!isSidebarMode && e.deltaY > 0 && window.innerWidth > 768) {
         enterSidebarMode();
     }
 });
@@ -27,7 +29,7 @@ window.addEventListener('touchstart', (e) => {
     touchStartY = e.touches[0].clientY; 
 });
 window.addEventListener('touchmove', (e) => {
-    if (!isSidebarMode) {
+    if (!isSidebarMode && window.innerWidth > 768) {
         let touchEndY = e.touches[0].clientY;
         if (touchStartY - touchEndY > 30) { // Swiped up
             enterSidebarMode();
@@ -65,10 +67,11 @@ if (window.innerWidth > 768) {
             cursorFollower.style.top = e.clientY + 'px';
         }, 50);
 
-        // Check if cursor is over a red background
+        // Check background color under cursor for dynamic color change
         const el = document.elementFromPoint(e.clientX, e.clientY);
         if (el) {
-            if (el.closest('.slide-red') || (isSidebarMode && el.closest('.red-sidebar'))) {
+            // Check if element or its parent has a red background
+            if (el.closest('.bg-red') || el.closest('.slide-red') || el.closest('#red-sidebar') || el.closest('.tools-box')) {
                 cursor.classList.add('cursor-white');
                 cursorFollower.classList.add('cursor-white');
             } else {
@@ -78,7 +81,7 @@ if (window.innerWidth > 768) {
         }
     });
 
-    const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category');
+    const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category, .logo-box, .cutout-img');
 
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -105,10 +108,12 @@ const observer = new IntersectionObserver((entries, observer) => {
     });
 }, observerOptions);
 
-// Reveal elements immediately that are in the sidebar
-document.querySelectorAll('.red-sidebar .fade-up').forEach(el => {
-    el.classList.add('is-visible');
-});
+// On mobile, just trigger everything immediately or when scrolled naturally
+if (window.innerWidth <= 768) {
+    document.querySelectorAll('.animate-on-scroll, .fade-up, .fade-left, .fade-right').forEach(el => {
+        observer.observe(el);
+    });
+}
 
 // Initialize Vanilla Tilt for 3D hover effects
 VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
@@ -121,7 +126,7 @@ VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
 
 // Simple Parallax Effect for Backgrounds
 window.addEventListener('scroll', () => {
-    if (!isSidebarMode) return;
+    if (!isSidebarMode && window.innerWidth > 768) return;
     const scrollY = window.scrollY;
     document.querySelectorAll('.parallax-bg').forEach(bg => {
         bg.style.transform = `translateY(${scrollY * 0.2}px)`;
