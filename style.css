@@ -13,11 +13,15 @@
     cursor: none;
 }
 
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--white);
     color: var(--dark);
     line-height: 1.6;
-    overflow-x: hidden;
     overflow-y: hidden;
     scroll-behavior: smooth;
 }
@@ -70,33 +74,37 @@ body.sidebar-mode {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Hamburger Menu Styling */
+/* Hamburger Menu Styling (FAB Style) */
 .hamburger {
     display: none;
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 40px;
-    height: 30px;
-    background: transparent;
-    border: none;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-red);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
     padding: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 .hamburger span {
     display: block;
-    width: 100%;
-    height: 4px;
+    width: 22px;
+    height: 3px;
     background-color: var(--white);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
 }
-.hamburger.active span:nth-child(1) { transform: translateY(13px) rotate(45deg); }
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-13px) rotate(-45deg); }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 /* Typography Classes */
 .serif-font { font-family: 'Playfair Display', serif; }
@@ -131,12 +139,14 @@ h2.title-large { font-size: 5.5rem; letter-spacing: -2px; line-height: 1;}
     z-index: 2;
     position: relative;
     letter-spacing: 2px;
+    text-align: center;
 }
 .portfolio-text {
     font-size: 11rem;
     line-height: 1;
     display: flex;
     align-items: baseline;
+    justify-content: center;
     font-weight: 700;
     letter-spacing: -2px;
 }
@@ -391,16 +401,18 @@ body.sidebar-mode .main-content {
     /* Completely disable sidebar scrolling lock and layout on Mobile */
     body { overflow-y: auto !important; margin: 0; padding: 0; width: 100%; }
     
-    /* Fix mobile gap - use dvh for dynamic viewport */
+    /* Fix mobile gap - use dvh for dynamic viewport and fix overflow */
     .red-sidebar { 
         position: relative; 
         min-height: 100dvh; 
-        width: 100vw; 
+        width: 100%; 
         height: auto;
         padding-top: 60px;
+        overflow: hidden; /* Fix halftone spilling out */
     }
+    .halftone-overlay { inset: 0; } /* Remove negative inset on mobile */
     
-    body.sidebar-mode .red-sidebar { width: 100vw; height: 100dvh; position: relative; box-shadow: none; }
+    body.sidebar-mode .red-sidebar { width: 100%; height: 100dvh; position: relative; box-shadow: none; }
     body.sidebar-mode .main-content { margin-left: 0; opacity: 1; }
     body.sidebar-mode .portfolio-title-wrapper { transform: scale(1); margin-top: 0; }
     
@@ -418,15 +430,15 @@ body.sidebar-mode .main-content {
         align-items: center;
         opacity: 0;
         pointer-events: none;
-        transform: translateX(100%);
-        transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        transform: translateY(-20px);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
         z-index: 999;
     }
     
     .sidebar-nav.active {
         opacity: 1;
         pointer-events: auto;
-        transform: translateX(0);
+        transform: translateY(0);
     }
     
     .sidebar-nav a {
