@@ -1,29 +1,82 @@
+// Intro to Sidebar Transformation Logic
+let isSidebarMode = false;
+
+function enterSidebarMode() {
+    if (isSidebarMode) return;
+    isSidebarMode = true;
+    document.body.classList.add('sidebar-mode');
+    
+    // Trigger intersection observer for the newly visible main content
+    setTimeout(() => {
+        document.querySelectorAll('.animate-on-scroll, .fade-up, .fade-left, .fade-right').forEach(el => {
+            observer.observe(el);
+        });
+    }, 500);
+}
+
+// Listen for mouse wheel scroll
+window.addEventListener('wheel', (e) => {
+    if (!isSidebarMode && e.deltaY > 0) {
+        enterSidebarMode();
+    }
+});
+
+// Listen for touch swipe
+let touchStartY = 0;
+window.addEventListener('touchstart', (e) => { 
+    touchStartY = e.touches[0].clientY; 
+});
+window.addEventListener('touchmove', (e) => {
+    if (!isSidebarMode) {
+        let touchEndY = e.touches[0].clientY;
+        if (touchStartY - touchEndY > 30) { // Swiped up
+            enterSidebarMode();
+        }
+    }
+});
+
+// Sidebar Navigation
+document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 // Custom Cursor Logic
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    
-    // Follower has a slight delay via CSS transition, but we update its position instantly
-    setTimeout(() => {
-        cursorFollower.style.left = e.clientX + 'px';
-        cursorFollower.style.top = e.clientY + 'px';
-    }, 50);
-});
-
-// Cursor Hover Effects
-const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category');
-
-hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursorFollower.classList.add('cursor-hover');
+if (window.innerWidth > 768) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+            cursorFollower.style.left = e.clientX + 'px';
+            cursorFollower.style.top = e.clientY + 'px';
+        }, 50);
     });
-    el.addEventListener('mouseleave', () => {
-        cursorFollower.classList.remove('cursor-hover');
+
+    const hoverElements = document.querySelectorAll('a, .hover-shift, .tool-item, .project-item, .interactive-link, .skill-category');
+
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorFollower.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorFollower.classList.remove('cursor-hover');
+        });
     });
-});
+}
 
 // Intersection Observer for Scroll Animations
 const observerOptions = {
@@ -36,13 +89,10 @@ const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+            // Optional: observer.unobserve(entry.target); // to animate only once
         }
     });
 }, observerOptions);
-
-document.querySelectorAll('.animate-on-scroll, .fade-up, .fade-left, .fade-right').forEach(el => {
-    observer.observe(el);
-});
 
 // Initialize Vanilla Tilt for 3D hover effects
 VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
@@ -55,9 +105,9 @@ VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
 
 // Simple Parallax Effect for Backgrounds
 window.addEventListener('scroll', () => {
+    if (!isSidebarMode) return;
     const scrollY = window.scrollY;
     document.querySelectorAll('.parallax-bg').forEach(bg => {
-        // Move background slightly opposite to scroll
         bg.style.transform = `translateY(${scrollY * 0.2}px)`;
     });
 });
